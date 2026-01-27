@@ -1,12 +1,13 @@
 % step 5 power-law analysis
+% loads step 2 & 4!! so work on that
 %% HY96 signals
 clc;
 clear;
 close all;
 addpath Function
-load(fullfile('step_4_avalanches', 'avalanches_HY96.mat'), 'avalanches_HY96');
+load(fullfile('step3_avalanches', 'avalanches_HY96.mat'), 'avalanches_HY96');
 % whole 295 subjects group level 
-sub_list = 1:295; %change subject
+sub_list = 1 %changed subject from 1:295 to 1
 event_threshold = 14;
 plfit_smin = 3; plfit_smax = 30;
 plfit_tmin = 3; plfit_tmax = 9;

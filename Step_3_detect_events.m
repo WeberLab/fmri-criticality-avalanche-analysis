@@ -6,7 +6,7 @@ addpath('Functions')
 
 %% detect the peak events of HY-96 ROI signals
 load(fullfile('MASK', 'parcellated_timeseries.mat'));
-mkdir(fullfile('step_2_events', 'ROI_level', 'HY48'));
+mkdir(fullfile('step_3_events', 'ROI_level', 'HY48'));
 for SUB = 1
     subj_ID = 'sub_001';
     II = 0;
@@ -22,7 +22,7 @@ for SUB = 1
     end
     peakevents.threshold = 0.1 : 0.1 : 3;
     % save
-    save(fullfile('step_2_events', 'ROI_level','HY48', 'sub_001.mat'), 'peakevents');
+    save(fullfile('step_3_events', 'ROI_level','HY48', 'sub_001.mat'), 'peakevents');
 end
 
 %% create a plot to the events
@@ -31,7 +31,7 @@ AX1=subplot(2,3,[1,2]);
 load(fullfile('MASK', 'parcellated_timeseries.mat')); %load the ROI signals
 Signals_original = time_series';
 Signal_normalized = zscore(Signals_original, 0, 2);
-load('step_2_events/ROI_level/HY48/sub_001.mat', 'peakevents')
+load('step_3_events/ROI_level/HY48/sub_001.mat', 'peakevents')
 Event = peakevents.ithr(14).raster; % avalanche event??????
 threshold = 1.4 * ones(1200,1); % define the threshold
 % plot

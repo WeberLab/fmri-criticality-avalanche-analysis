@@ -32,7 +32,7 @@ masker = NiftiLabelsMasker(
 )
 
 # Here we go from nifti files to the signal time series in a numpy
-# array. No comfounds. 
+# array. No confounds. 
 time_series = masker.fit_transform(subject_data)
 
 print(f"Time series shape: {time_series.shape}")  # gives shape of time series

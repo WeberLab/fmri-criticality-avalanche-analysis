@@ -15,7 +15,7 @@ load(fullfile('MASK', 'parcellated_timeseries.mat'))
 Signals_original = time_series';
 Signal_normalized = zscore(Signals_original')'; % z-score
 %load('step_3_events\ROI_level\HY96\sub_001.mat', 'peakevents')
-load('step_2_events/ROI_level/HY48/sub_001.mat', 'peakevents')
+load('step_3_events/ROI_level/HY48/sub_001.mat', 'peakevents')
 Event = peakevents.ithr(14).raster; % avalanche event
 threshold = 1.4 * ones(1200,1); % define the threshold
 % plot
@@ -36,6 +36,7 @@ title('(a)', 'FontName', 'Arial', 'FontSize', 24, 'units', 'normalized', ...
     'VerticalAlignment', 'bottom');
 
 %% figure 1b 
+% loads step 5!! so work on that
 AX1 = subplot(2,3,3);
 load(fullfile('step_5_powerlaw_analysis', 'powerlaw_analysis_HY96.mat'), 'powerlaw_analysis_HY96')
 alpha = powerlaw_analysis_HY96.powerlaw_fit_wholegroup.avalancheSize.alpha;

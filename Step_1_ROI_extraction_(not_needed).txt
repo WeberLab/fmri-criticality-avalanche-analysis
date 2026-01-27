@@ -6,7 +6,7 @@ data = niftiread('HCP_rfMRI_SingleSubjectData/rfMRI_REST1_LR_hp2000_clean.nii');
 
 %% Extract ROI signals
 % HY_96
-load(['MASK/parcellated_timeseries.mat']);
+load('MASK/parcellated_timeseries.mat');
 for roi = 1:48
     clear RS_HY_48_voxceL_signals index data_aftermask
     mkdir(['voxcel_signals/HY_48/ROI',num2str(roi)]);
