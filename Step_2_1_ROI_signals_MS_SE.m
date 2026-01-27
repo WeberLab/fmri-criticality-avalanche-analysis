@@ -14,7 +14,7 @@ load(fullfile('MASK', 'parcellated_timeseries.mat'));
 
 for sub = 1 %CHANGED SUBJECT FROM 1:295 TO 1 FOR NOW!!!
     sub
-    
+
     % ROI signals
     time_len = 1200;
     node_num = 48;
@@ -30,7 +30,7 @@ for sub = 1 %CHANGED SUBJECT FROM 1:295 TO 1 FOR NOW!!!
     [MS(sub), SS(sub), CS(sub), SE(sub), sample_failed] =  xlz_kop2sta(kop, bins_num);
     
     %kop_sta_HY(sub).subj_ID = ROIsignals_HY(sub).subj_ID;
-    kop_sta_HY(sub).subj_ID = 'sub_001'
+    kop_sta_HY(sub).subj_ID = 1.    %changed as only 1 subject 
     kop_sta_HY(sub).kop = kop;
     kop_sta_HY(sub).mean_kop = MS(sub);
     kop_sta_HY(sub).min_kop = min(kop);
