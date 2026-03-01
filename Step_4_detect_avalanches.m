@@ -10,7 +10,7 @@ clc;
 clear;
 close all;
 timebinsize = 1;
-ROI_number = 48;   %they have 96
+ROI_number = 48;   %they had 96, we have 48
 time_length = 1200;
 for SUB = 1.      % changed from 1:295 as we only have 1 subject right now!
     subj_ID = ['sub_', num2str(SUB, '%03d')];

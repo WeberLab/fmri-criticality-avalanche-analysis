@@ -8,14 +8,22 @@ figure('Color', 'w', 'Units', 'Normalized', ...
     ' between MS and SE against choice of parcellation'], ...
     'Position', [0.1 0.1 0.8 0.8]);
 
-load(fullfile('step_2_MS_SE_relationship','results.mat'));
+% load(fullfile('step_2_MS_SE_relationship','results.mat')); 
+% removed above line as they changed file name from results.mat to something else, 
+% it was not kuromoto_order_parameter.mat too, trying 'MS_SE_rel_wholebrain.mat' from step_2_3
+load(fullfile('step_2_MS_SE_relationship','MS_SE_rel_wholebrain.mat'));
+% I think they changed the filename/variable so it might be kop_sta_HY and not LMHgroup
 LMS = LMHgroup.LMS;
 MMS = LMHgroup.MMS;
 HMS = LMHgroup.HMS;
-%% HY-96 
+%% HY-96
+% will get the insufficient error rn because we need at least 3 points for the 
+% inverted-u fit, run this with 3 or more subjects.  
 for sub = 1 %changed subject from 1:295 to 1
-    MS_HY48(sub) = results_HY(sub).mean_kop;
-    SE_HY48(sub) = results_HY(sub).entropy_kop;
+    % MS_HY48(sub) = results_HY(sub).mean_kop;
+    % SE_HY48(sub) = results_HY(sub).entropy_kop;
+    MS_HY48(sub) = kop_sta_HY(sub).mean_kop;
+    SE_HY48(sub) = kop_sta_HY(sub).entropy_kop;
 end 
 AX1 = subplot(2,3,1);
 plot(MS_HY48, SE_HY48, ...
@@ -42,7 +50,9 @@ f4 = plot(MS_HY48(HMS(:,3)), SE_HY48(HMS(:,3)),...
     'Color',[1,0,0],...
     'Marker','o', 'MarkerSize',6,...
     'LineWidth',2, 'LineStyle','none');
-[~, fitx, fity] = f_fit_poly2(MS_HY48, SE_HY48);
+%[~, fitx, fity] = f_fit_poly2(MS_HY48, SE_HY48); 
+% %had function name wrong above i think, should be xlz_fit_poly2 ?
+[~, fitx, fity] = xlz_fit_poly2(MS_HY48, SE_HY48);
 f1 = plot(fitx, fity, ...
     'Color', [1,0,0], ...
     'LineStyle', '--', ...
