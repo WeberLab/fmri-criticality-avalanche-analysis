@@ -88,9 +88,9 @@ duration_range = min(duration):max(duration);
 duration_distribution = hist(duration, duration_range);
 duration_distribution = duration_distribution/duration_distribution(1);
 duration_plfit_range = t_min:t_max;
-% duration_plfit_distribution = duration_plfit_range.^(-alpha); 
+duration_plfit_distribution = duration_plfit_range.^(-alpha); 
 % Not sure why they used -alpha here? so changed it to tau for now
-duration_plfit_distribution = duration_plfit_range.^(-tau);
+%duration_plfit_distribution = duration_plfit_range.^(-tau);
 F1 = loglog(duration_range, duration_distribution, 'Color', [0.50,0.50,0.50], ...
     'LineStyle', 'none', 'LineWidth', 2, 'Marker', 'o', 'MarkerSize',6);
 hold on;

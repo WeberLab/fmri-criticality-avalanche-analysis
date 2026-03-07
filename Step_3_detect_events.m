@@ -4,11 +4,12 @@ clear;
 close all
 addpath('Functions')
 
-%% detect the peak events of HY-96 ROI signals
+%% detect the peak events of HY-48 ROI signals
 load(fullfile('MASK', 'parcellated_timeseries.mat'));
 mkdir(fullfile('step_3_events', 'ROI_level', 'HY48'));
-for SUB = 1
-    subj_ID = 'sub_001';
+for SUB = 1 %changed it from 1:295
+    %subj_ID = ['sub_', num2str(SUB, '%03d')]
+    subj_ID = 'sub_001'; 
     II = 0;
     clear peakevents
     for threshold = 0.1 : 0.1 : 3

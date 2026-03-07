@@ -16,7 +16,7 @@ load(fullfile('step_2_MS_SE_relationship','MS_SE_rel_wholebrain.mat'));
 LMS = LMHgroup.LMS;
 MMS = LMHgroup.MMS;
 HMS = LMHgroup.HMS;
-%% HY-96
+%% HY-48
 % will get the insufficient error rn because we need at least 3 points for the 
 % inverted-u fit, run this with 3 or more subjects.  
 for sub = 1 %changed subject from 1:295 to 1

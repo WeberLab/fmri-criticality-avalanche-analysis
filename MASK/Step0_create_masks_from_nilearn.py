@@ -11,7 +11,7 @@ look_up_table = dataset.lut                                    # lookup table ma
 print(f"Atlas ROIs are located in nifti image (4D) at: {atlas_filename}")
 
 # load preprocessed HCP clean rsfMRI data
-subject_data = image.load_img('HCP_rfMRI_SingleSubjectData/rfMRI_REST1_LR_hp2000_clean.nii')
+subject_data = image.load_img('HCP_rfMRI_SingleSubjectData/rfMRI_REST1_LR_hp2000_clean_100307.nii')
 
 # Extract signals on a parcellation defined by labels
 from nilearn.maskers import NiftiLabelsMasker
@@ -27,7 +27,7 @@ masker = NiftiLabelsMasker(
     lut=look_up_table,
     standardize="zscore_sample",
     strategy ='mean',                 # ask if this is correct? -> this is doing the mean time series across the voxels in each ROI
-    memory=None,                      # don't need to cache as this is only one subject, might do it for multiple subjects
+    memory=None,  #check this         # don't need to cache as this is only one subject, might do it for multiple subjects
     verbose=1,
 )
 
@@ -40,12 +40,12 @@ print(f"Number of regions: {len(labels)}")         # gives number of atlas label
 
 
 # Save as .mat file for MATLAB
-savemat('MASK/parcellated_timeseries.mat', {    # name of file as which it is saved
+savemat('MASK/parcellated_timeseries_100307.mat', {    # name of file as which it is saved
     'time_series': time_series,                 # saves the (the ROI x time matrix)
     'labels': labels,                           # saves region names
     'n_timepoints': time_series.shape[0],       # saves number of time points
     'n_regions': time_series.shape[1]           # saves number of regions
 })
 
-print("Saved to MASK/parcellated_timeseries.mat")
+print("Saved to MASK/parcellated_timeseries_100307.mat")
 
