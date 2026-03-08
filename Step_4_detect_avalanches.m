@@ -12,7 +12,7 @@ close all;
 timebinsize = 1;
 ROI_number = 48;   %they had 96, we have 48
 time_length = 1200;
-for SUB = 1.      % changed from 1:295 as we only have 1 subject right now!
+for SUB = 1      % changed from 1:295 as we only have 1 subject right now!
     subj_ID = ['sub_', num2str(SUB, '%03d')];
     %load(fullfile('step_3_events', 'ROI_level', 'HY96', [subj_ID, '.mat']), 'peakevents');
     load(fullfile('step_3_events', 'ROI_level', 'HY48', 'sub_001.mat'), 'peakevents'); % changed as only 1 subject!
