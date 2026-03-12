@@ -19,7 +19,7 @@ HMS = LMHgroup.HMS;
 %% HY-48
 % will get the insufficient error rn because we need at least 3 points for the 
 % inverted-u fit, run this with 3 or more subjects.  
-for sub = 1 %changed subject from 1:295 to 1
+for sub = 1:length(kop_sta_HY)
     % MS_HY48(sub) = results_HY(sub).mean_kop;
     % SE_HY48(sub) = results_HY(sub).entropy_kop;
     MS_HY48(sub) = kop_sta_HY(sub).mean_kop;

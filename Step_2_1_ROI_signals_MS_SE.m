@@ -1,6 +1,6 @@
-%% step2: calculate the mean synchronization (MS) and synchronization entropy(SE)
+%% step 2: calculate the mean synchronization (MS) and synchronization entropy(SE)
 
-%% HY96-ROI signals
+%% HY48-ROI signals
 clc;
 clear;
 close all
@@ -10,16 +10,17 @@ addpath('Functions')
 
 % calculate the MS, SE and Kuramoto order paramater
 % load(fullfile('step_1_extract_ROI_signals', 'ROI_signals', 'ROIsignals.mat'), 'ROIsignals_HY'); %commented out since I use python for ROI extraction
-load(fullfile('MASK', 'parcellated_timeseries.mat')); 
+% load(fullfile('MASK', 'parcellated_timeseries.mat')); % used when had 1 subject only
+load(fullfile('MASK', 'ROIsignals.mat'), 'ROIsignals_HY');
 
-for sub = 1 %CHANGED SUBJECT FROM 1:295 TO 1 FOR NOW!!!
+for sub = 1:length(ROIsignals_HY)
     sub
 
     % ROI signals
     time_len = 1200;
     node_num = 48;
-    signals = time_series
-    %signals = ROIsignals_HY(sub).ROIsignals(1:node_num, 1:time_len);                %check if removing this was okay
+    % signals = time_series     % used when had 1 subject only
+    signals = ROIsignals_HY(sub).ROIsignals(1:node_num, 1:time_len);
     
     % z-score normalized signals
     signals_zs = zscore(signals');
@@ -29,8 +30,8 @@ for sub = 1 %CHANGED SUBJECT FROM 1:295 TO 1 FOR NOW!!!
     bins_num = 30;
     [MS(sub), SS(sub), CS(sub), SE(sub), sample_failed] =  xlz_kop2sta(kop, bins_num);
     
-    %kop_sta_HY(sub).subj_ID = ROIsignals_HY(sub).subj_ID;
-    kop_sta_HY(sub).subj_ID = 1.    %changed as only 1 subject 
+    kop_sta_HY(sub).subj_ID = ROIsignals_HY(sub).subj_id;
+    %kop_sta_HY(sub).subj_ID = 1.    %used when had 1 subject only
     kop_sta_HY(sub).kop = kop;
     kop_sta_HY(sub).mean_kop = MS(sub);
     kop_sta_HY(sub).min_kop = min(kop);

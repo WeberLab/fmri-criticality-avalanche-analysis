@@ -9,13 +9,10 @@ figure('Color', 'w', ...
 
 %% figure 1a
 AX1=subplot(2,3,[1,2]);
-% load(fullfile('step_1_extract_ROI_signals', 'ROI_signals', 'ROIsignals.mat'), 'ROIsignals_HY'); %load the ROI signals
-load(fullfile('MASK', 'parcellated_timeseries.mat')) %load the ROI signals
-%Signals_original = ROIsignals_HY(1).ROIsignals;
-Signals_original = time_series';
+load(fullfile('MASK', 'ROIsignals.mat'), 'ROIsignals_HY');
+Signals_original = ROIsignals_HY(1).ROIsignals;
 Signal_normalized = zscore(Signals_original')'; % z-score
-%load('step_3_events\ROI_level\HY96\sub_001.mat', 'peakevents')
-load('step_3_events/ROI_level/HY48/sub_001.mat', 'peakevents')
+load('step_3_events/ROI_level/HY48/sub_100307.mat', 'peakevents')
 Event = peakevents.ithr(14).raster; % avalanche event
 threshold = 1.4 * ones(1200,1); % define the threshold
 % plot
@@ -35,8 +32,8 @@ title('(a)', 'FontName', 'Arial', 'FontSize', 24, 'units', 'normalized', ...
     'FontWeight', 'bold', 'position', [-1/36,1+1/18], 'HorizontalAlignment', 'right', ...
     'VerticalAlignment', 'bottom');
 
+
 %% figure 1b 
-% loads step 5!! so work on that
 AX1 = subplot(2,3,3);
 load(fullfile('step_5_powerlaw_analysis', 'powerlaw_analysis_HY48.mat'), 'powerlaw_analysis_HY48')
 alpha = powerlaw_analysis_HY48.powerlaw_fit_wholegroup.avalancheSize.alpha;
@@ -89,8 +86,6 @@ duration_distribution = hist(duration, duration_range);
 duration_distribution = duration_distribution/duration_distribution(1);
 duration_plfit_range = t_min:t_max;
 duration_plfit_distribution = duration_plfit_range.^(-alpha); 
-% Not sure why they used -alpha here? so changed it to tau for now
-%duration_plfit_distribution = duration_plfit_range.^(-tau);
 F1 = loglog(duration_range, duration_distribution, 'Color', [0.50,0.50,0.50], ...
     'LineStyle', 'none', 'LineWidth', 2, 'Marker', 'o', 'MarkerSize',6);
 hold on;

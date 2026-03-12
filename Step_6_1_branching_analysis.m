@@ -4,8 +4,7 @@
 clc; clear; close all;
 addpath('Functions');
 load(fullfile('step_4_avalanches', 'ROI_level', 'HY48', 'avalanches_HY48.mat'))
-% sub_list = 1:295; %CHNAGE IT BACK LATER as rn only 1 subject
-sub_list = 1;
+sub_list = 1:4;
 for N = 1:length(sub_list)
     sub = sub_list(N)
     threshold = 0;
