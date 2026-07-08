@@ -1,10 +1,10 @@
 %% convet the avalanche to branching process
 
-%% HY96
+%% HY48
 clc; clear; close all;
 addpath('Functions');
 load(fullfile('step_4_avalanches', 'ROI_level', 'HY48', 'avalanches_HY48.mat'))
-sub_list = 1:4;
+sub_list = 1:20;
 for N = 1:length(sub_list)
     sub = sub_list(N)
     threshold = 0;

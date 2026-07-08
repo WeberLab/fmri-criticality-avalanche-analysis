@@ -1,5 +1,5 @@
 function [powerlaw_fit]=xlz_aggr_ava_pl(sub_list, avalanches, event_threshold, plfit_smin, plfit_smax, plfit_tmin, plfit_tmax)
-        addpath('Functions/CritAnalysisSoftwarePackage2016-04-25')
+        addpath('Functions/CritAnalysisSoftwarePackage2016-04-25');
         sizes = [];
         durations = [];
         for N = 1:length(sub_list)
@@ -32,7 +32,18 @@ function [powerlaw_fit]=xlz_aggr_ava_pl(sub_list, avalanches, event_threshold, p
         % calculate the relationship between sizes and duration
         gamma_mle = (tau-1) / (alpha-1);
         [Lifetime, AverageSize]=xlz_lifetimeAverageSize(durations, sizes);
-        [gamma_nlsfit] = xlz_fit_plnonlinearLS(Lifetime(plfit_tmin:plfit_tmax), AverageSize(plfit_tmin:plfit_tmax));
+        %[gamma_nlsfit] = xlz_fit_plnonlinearLS(Lifetime(plfit_tmin:plfit_tmax), AverageSize(plfit_tmin:plfit_tmax));
+        %change added here below
+        fit_tmax = min(plfit_tmax, length(Lifetime));
+
+        if plfit_tmin <= fit_tmax
+                [gamma_nlsfit] = xlz_fit_plnonlinearLS( ...
+                        Lifetime(plfit_tmin:fit_tmax), ...
+                        AverageSize(plfit_tmin:fit_tmax));
+        else
+                gammaFromFit = NaN;
+        end
+        % change added here above
         averageSizeFit = (gamma_nlsfit.a).*(plfit_tmin:plfit_tmax).^(gamma_nlsfit.b);
         gammaFromFit = gamma_nlsfit.b;
         delta = abs(gamma_mle-gammaFromFit);

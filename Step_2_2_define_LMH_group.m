@@ -16,33 +16,18 @@ end
 [MS_value, MS_index] = sort(MS);
 
 % LMS group
-% commented out 3 lines below for running 1 subject, restored for multiple subjects
-LMHgroup.LMS(:,1) = subj_ID(MS_index(1));   %restored later
-LMHgroup.LMS(:,2) = MS_value(1);            %restored later
-LMHgroup.LMS(:,3) = MS_index(1);            %restored later
-
-% LMHgroup.LMS(:,1) = subj_ID(MS_index(1));   %changed for 1 subject
-% LMHgroup.LMS(:,2) = MS_value(1);            %changed for 1 subject
-% LMHgroup.LMS(:,3) = MS_index(1);            %changed for 1 subject
+LMHgroup.LMS(:,1) = subj_ID(MS_index(1:4));
+LMHgroup.LMS(:,2) = MS_value(1:4);
+LMHgroup.LMS(:,3) = MS_index(1:4);
 
 % MMS group
-% commented out 3 lines below for running 1 subject, restored for multiple subjects
-LMHgroup.MMS(:,1) = subj_ID(MS_index(2:3));   %restored later
-LMHgroup.MMS(:,2) = MS_value(2:3);            %restored later
-LMHgroup.MMS(:,3) = MS_index(2:3);            %restored later
-
-%LMHgroup.MMS(:,1) = subj_ID(MS_index(1));   %changed for 1 subject
-%LMHgroup.MMS(:,2) = MS_value(1);            %changed for 1 subject
-%LMHgroup.MMS(:,3) = MS_index(1);            %changed for 1 subject
+LMHgroup.MMS(:,1) = subj_ID(MS_index(9:12));
+LMHgroup.MMS(:,2) = MS_value(9:12);
+LMHgroup.MMS(:,3) = MS_index(9:12);
 
 % HMS group
-% commented out 3 lines below for running 1 subject, restored for multiple subjects
-LMHgroup.HMS(:,1) = subj_ID(MS_index(4)); %restored later
-LMHgroup.HMS(:,2) = MS_value(4);          %restored later
-LMHgroup.HMS(:,3) = MS_index(4);          %restored later
-
-%LMHgroup.HMS(:,1) = subj_ID(MS_index(1));   %changed for 1 subject
-%LMHgroup.HMS(:,2) = MS_value(1);            %changed for 1 subject
-%LMHgroup.HMS(:,3) = MS_index(1);            %changed for 1 subject
+LMHgroup.HMS(:,1) = subj_ID(MS_index(17:20));
+LMHgroup.HMS(:,2) = MS_value(17:20);
+LMHgroup.HMS(:,3) = MS_index(17:20);
 
 save(fullfile('step_2_MS_SE_relationship','MS_SE_rel_wholebrain.mat'), 'kop_sta_HY', 'LMHgroup');

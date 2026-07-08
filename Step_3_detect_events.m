@@ -8,7 +8,7 @@ addpath('Functions')
 % load(fullfile('MASK', 'parcellated_timeseries.mat')); old
 load(fullfile('MASK', 'ROIsignals.mat'), 'ROIsignals_HY');
 mkdir(fullfile('step_3_events', 'ROI_level', 'HY48'));
-for SUB = 1:4
+for SUB = 1:20
     subj_ID = ROIsignals_HY(SUB).subj_id
     II = 0;
     clear peakevents
