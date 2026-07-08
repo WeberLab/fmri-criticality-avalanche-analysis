@@ -3,9 +3,7 @@
 This repository contains MATLAB code and documentation for my undergraduate honours thesis:
 
 **Sex Differences in Brain Criticality Using Neuronal Avalanche Analysis of Resting-State fMRI**  
-Prithisha Gill  
-B.Sc. Honours Biology, University of British Columbia  
-2026
+Prithisha Gill [B.Sc. Honours Biology, University of British Columbia, 2026]
 
 The project investigates whether neuronal avalanche dynamics differ between male and female groups using resting-state fMRI data from the 
 Human Connectome Project (HCP) S1200 Young Adult release.
